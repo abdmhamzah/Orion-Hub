@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
   const Model = Sequelize.Model
 
-  class Student extends Model {}
+  class Student extends Model { }
 
   Student.init({
     first_name: DataTypes.STRING,
@@ -12,9 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     birth_date: DataTypes.DATEONLY
   }, { sequelize });
-  
-  Student.associate = function(models) {
+
+  Student.associate = function (models) {
     // associations can be defined here
+    Student.belongsTo(models.Buddy)
   };
   return Student;
 };

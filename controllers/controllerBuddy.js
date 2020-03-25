@@ -23,8 +23,7 @@ class BuddyController {
         Buddy.create({
             first_name: Buddy.first_name,
             last_name: Buddy.last_name,
-            phone_number: Buddy.phone_number,
-            birth_year: Buddy.birth_year,
+            email: Buddy.email,
             gender: Buddy.gender
         })
             .then(data => {
@@ -54,8 +53,7 @@ class BuddyController {
         Buddy.update({
             first_name: Buddy.first_name,
             last_name: Buddy.last_name,
-            phone_number: Buddy.phone_number,
-            birth_year: Buddy.birth_year,
+            email: Buddy.email,
             gender: Buddy.gender
         }, {
             where: {
