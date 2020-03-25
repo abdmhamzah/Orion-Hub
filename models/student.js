@@ -10,7 +10,8 @@ module.exports = (sequelize, DataTypes) => {
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
     gender: DataTypes.STRING,
-    birth_date: DataTypes.DATEONLY
+    birth_date: DataTypes.DATEONLY,
+    buddy_id: DataTypes.INTEGER
   }, { sequelize });
 
   Student.associate = function (models) {

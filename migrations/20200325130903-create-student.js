@@ -23,6 +23,9 @@ module.exports = {
       birth_date: {
         type: Sequelize.DATEONLY
       },
+      buddy_id: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
