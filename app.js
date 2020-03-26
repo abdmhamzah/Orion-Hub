@@ -7,7 +7,8 @@ app.set('view engine', 'ejs')
 
 app.use(express.urlencoded({ extended: true }))
 
-// app.locals.ageReleased = require('./helpers/ageReleased').ageReleased // UNTUK HELPERS
+app.locals.formatDate  = require('./helpers/formatterDate') // UNTUK HELPERS
+app.locals.isoDate  = require('./helpers/isoDate') // UNTUK HELPERS
 
 app.use(route)
 

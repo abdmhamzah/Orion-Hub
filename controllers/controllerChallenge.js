@@ -36,7 +36,7 @@ class ControllerChallenge {
         }  else {
             Challenge.create({
                 name: req.body.name,
-                deadline: req.body.deadline
+                deadline: isoDate(req.body.deadline)
             })
                 .then(data => {
                     res.redirect('/challenges/add')

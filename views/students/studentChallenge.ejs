@@ -34,18 +34,20 @@
                 <th scope="col">Challenge Name</th>
                 <th scope="col">Deadline</th>
                 <th scope="col">Status</th>
+                <th scope="col">Options</th>
               </tr>
             </thead>
             <tbody>
                 <% students.Challenges.forEach(el => { %>
                     <tr>
                         <td> <%= el.name %>  </td>
-                        <td> <%= el.deadline %>  </td>
+                        <td> <%= formatDate(el.deadline) %>  </td>
                         <% if(el.StudentChallenge.isComplete == null){ %>
                             <td> Undone </td>
                         <% } else{ %>
                             <td> Done </td>
-                        <% } %> 
+                        <% } %>
+                        <td> <a href=""><button class="btn btn-success" type="submit">Finish</button></a></td>
                     </tr>
                 <% }) %>
             </tbody>    

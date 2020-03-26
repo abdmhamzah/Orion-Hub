@@ -91,16 +91,6 @@ class StudentsController {
     }
 
     static challenge(req, res){
-        // Promise.all([
-        //     Student.findByPk(req.params.id, { include: Challenge }),
-        //     Challenge.findAll()
-        // ])
-        //     .then(([challenge, students]) => {
-        //         res.render('./students/studentChallenge', { challenge, students })
-        //     })
-        //     .catch(err => {
-        //         res.send(err)
-        //     })
         Challenge.findAll()
             .then(challenge => {
                 Student.findByPk(req.params.id, { include: Challenge })

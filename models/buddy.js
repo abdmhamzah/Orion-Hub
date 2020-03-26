@@ -16,7 +16,12 @@ module.exports = (sequelize, DataTypes) => {
     last_name: DataTypes.STRING,
     email: DataTypes.STRING,
     gender: DataTypes.STRING
-  }, { sequelize });
+  }, { 
+    sequelize,
+    hooks: {
+      
+    }
+   });
   
   Buddy.associate = function(models) {
     Buddy.hasMany(models.Student)
