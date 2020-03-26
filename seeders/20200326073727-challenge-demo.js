@@ -5,11 +5,13 @@ module.exports = {
     const listChallenge = [
       {
         name: 'Sudoku',
+        deadline: '2020-03-28',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: 'Battleship',
+        deadline: '2020-03-28',
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -19,7 +19,13 @@ module.exports = (sequelize, DataTypes) => {
   }, { 
     sequelize,
     hooks: {
-      
+      beforeCreate: (model, option) => {
+        if(model.gender == 'Male'){
+          model.first_name = `Mr. ${model.first_name}`
+        } else {
+          model.first_name = `Mrs. ${model.first_name}`
+        }
+      }
     }
    });
   
