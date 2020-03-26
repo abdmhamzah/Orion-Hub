@@ -4,7 +4,8 @@ class StudentsController {
     static get(req, res) {
         Student.findAll({})
             .then(data => {
-                res.render('../students/student', { students: data })
+                res.render('./students/student', { students: data })
+                // res.send('ini di student')
             })
             .catch(err => {
                 res.send(err)
@@ -12,18 +13,24 @@ class StudentsController {
     }
 
     static addForm(req, res) {
-        res.render('../students/addFormStudent.ejs')
+        Buddy.findAll()
+            .then(buddy => {
+                res.render('./students/addFormStudent.ejs', { buddies: buddy })
+            })
+            .catch(err => {
+
+            })
     }
 
     static addStudent(req, res) {
         let newStudent = req.body;
-        // res.send(req.body)
         Student.create({
-            first_name: Student.first_name,
-            last_name: Student.last_name,
-            email: Student.email,
-            gender: Student.gender,
-            birth_date: Student.birth_date
+            first_name: newStudent.first_name,
+            last_name: newStudent.last_name,
+            email: newStudent.email,
+            gender: newStudent.gender,
+            birth_date: newStudent.birth_date,
+            BuddyId: newStudent.BuddyId
         })
             .then(data => {
                 // console.log('Data :', data.fullName());
@@ -35,11 +42,15 @@ class StudentsController {
     }
 
     static editForm(req, res) {
-        console.log('req: ', req.params.id);
-        // Student.findByPk(req.params.id, { include: [{ model: ProductionHouse }] })
-        Student.findByPk(req.params.id, {})
-            .then(data => {
-                res.render('../students/editFormStudents.ejs', { students: data })
+        Buddy.findAll()
+            .then(buddy => {
+                Student.findByPk(req.params.id)
+                    .then(data => {
+                        res.render('./students/editFormStudent.ejs', { students: data, buddies: buddy })
+                    })
+                    .catch(err => {
+                        res.send(err)
+                    })
             })
             .catch(err => {
                 res.send(err)
@@ -47,21 +58,21 @@ class StudentsController {
     }
 
     static updateStudent(req, res) {
-        console.log('req: ', req.body);
         let newStudent = req.body;
         Student.update({
-            first_name: Student.first_name,
-            last_name: Student.last_name,
-            email: Student.email,
-            gender: Student.gender,
-            birth_date: Student.birth_date
+            first_name: newStudent.first_name,
+            last_name: newStudent.last_name,
+            email: newStudent.email,
+            gender: newStudent.gender,
+            birth_date: newStudent.birth_date,
+            BuddyId: newStudent.BuddyId
         }, {
             where: {
                 id: Number(req.params.id)
             }
         })
             .then(data => {
-                console.log('data: ', data.fullName());
+                // console.log('data: ', data.fullName());
                 res.redirect('/students')
             })
             .catch(err => {

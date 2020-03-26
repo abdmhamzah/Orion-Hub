@@ -2,8 +2,6 @@ const { Buddy, Challenge, Student, StudentChallenge } = require('../models')
 
 class BuddyController {
     static get(req, res) {
-        // res.send('ini sudah di castContrl ari nugroho');
-        // Cast.findAll({ include: [{ model: ProductionHouse }] })
         Buddy.findAll({})
             .then(data => {
                 res.render('./buddies/buddy', { buddies: data })
@@ -18,16 +16,15 @@ class BuddyController {
     }
 
     static addBuddy(req, res) {
-        let Buddy = req.body;
-        // res.send(req.body)
+        console.log(req.body);
+        
         Buddy.create({
-            first_name: Buddy.first_name,
-            last_name: Buddy.last_name,
-            email: Buddy.email,
-            gender: Buddy.gender
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            gender: req.body.gender
         })
             .then(data => {
-                // console.log('Data :', data.fullName());
                 res.redirect('/buddies')
             })
             .catch(err => {
@@ -36,8 +33,6 @@ class BuddyController {
     }
 
     static editForm(req, res) {
-        console.log('req: ', req.params.id);
-        // Buddy.findByPk(req.params.id, { include: [{ model: ProductionHouse }] })
         Buddy.findByPk(req.params.id, {})
             .then(data => {
                 res.render('./buddies/editFormBuddy.ejs', { buddies: data })

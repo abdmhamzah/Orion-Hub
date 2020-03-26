@@ -14,16 +14,16 @@ module.exports = {
       last_name: {
         type: Sequelize.STRING
       },
-      email: {
+      gender: {
         type: Sequelize.STRING
       },
-      gender: {
+      email: {
         type: Sequelize.STRING
       },
       birth_date: {
         type: Sequelize.DATEONLY
       },
-      buddy_id: {
+      BuddyId: {
         type: Sequelize.INTEGER
       },
       createdAt: {
