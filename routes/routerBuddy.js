@@ -14,4 +14,6 @@ router.post('/edit/:id', BuddyControllers.updateBuddy)
 //Delete buddy
 router.get('/delete/:id', BuddyControllers.dell)
 
+
+
 module.exports = router

@@ -1,15 +1,18 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Challenges', {
+    return queryInterface.createTable('StudentChallenges', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      StudentId: {
+        type: Sequelize.INTEGER
+      },
+      ChallengeId: {
+        type: Sequelize.INTEGER
       },
       isComplete: {
         type: Sequelize.BOOLEAN
@@ -25,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Challenges');
+    return queryInterface.dropTable('StudentChallenges');
   }
 };

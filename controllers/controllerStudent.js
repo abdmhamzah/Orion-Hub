@@ -2,7 +2,7 @@ const { Buddy, Challenge, Student, StudentChallenge } = require('../models')
 
 class StudentsController {
     static get(req, res) {
-        Student.findAll({})
+        Student.findAll({ include: Buddy })
             .then(data => {
                 res.render('./students/student', { students: data })
                 // res.send('ini di student')
@@ -90,6 +90,45 @@ class StudentsController {
             })
     }
 
+    static challenge(req, res){
+        // Promise.all([
+        //     Student.findByPk(req.params.id, { include: Challenge }),
+        //     Challenge.findAll()
+        // ])
+        //     .then(([challenge, students]) => {
+        //         res.render('./students/studentChallenge', { challenge, students })
+        //     })
+        //     .catch(err => {
+        //         res.send(err)
+        //     })
+        Challenge.findAll()
+            .then(challenge => {
+                Student.findByPk(req.params.id, { include: Challenge })
+                    .then(students => {
+                        res.render('./students/studentChallenge', { challenge, students })
+                    })
+                    .catch(err => {
+                        res.send(err)
+                    })
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
+
+    static challengeList(req, res){
+        StudentChallenge.create({
+            ChallengeId: req.body.ChallengeId,
+            StudentId: req.params.id,
+            status: false
+        })
+            .then(data => {
+                res.redirect(`/students/challenges/${req.params.id}`)
+            })
+            .catch(err => {
+                res.send(err)
+            })
+    }
 }
 
 module.exports = StudentsController

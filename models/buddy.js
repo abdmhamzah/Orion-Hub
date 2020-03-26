@@ -3,7 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Sequelize = sequelize.Sequelize
   const Model = Sequelize.Model
 
-  class Buddy extends Model {}
+  class Buddy extends Model {
+
+    getFullName(){
+      return `${this.first_name} ${this.last_name}`
+    }
+
+  }
 
   Buddy.init({
     first_name: DataTypes.STRING,

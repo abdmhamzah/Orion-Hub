@@ -7,11 +7,13 @@ module.exports = (sequelize, DataTypes) => {
 
   StudentChallenge.init({
     StudentId: DataTypes.INTEGER,
-    ChallengeId: DataTypes.INTEGER
+    ChallengeId: DataTypes.INTEGER,
+    isComplete: DataTypes.BOOLEAN
   }, { sequelize });
-  
+
   StudentChallenge.associate = function(models) {
-    // associations can be defined here
+    StudentChallenge.belongsTo(models.Student)
+    StudentChallenge.belongsTo(models.Challenge)
   };
   return StudentChallenge;
 };

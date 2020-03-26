@@ -5,13 +5,11 @@ module.exports = {
     const listChallenge = [
       {
         name: 'Sudoku',
-        isComplete: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
         name: 'Battleship',
-        isComplete: false,
         createdAt: new Date(),
         updatedAt: new Date()
       }

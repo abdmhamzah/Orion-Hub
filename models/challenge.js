@@ -7,11 +7,12 @@ module.exports = (sequelize, DataTypes) => {
 
   Challenge.init({
     name: DataTypes.STRING,
-    isComplete: DataTypes.BOOLEAN
+    deadline: DataTypes.DATEONLY
   }, { sequelize });
   
   Challenge.associate = function(models) {
-    // associations can be defined here
+    Challenge.hasMany(models.StudentChallenge)
+    Challenge.belongsToMany(models.Student, { through: 'StudentChallenge', foreignKey: 'ChallengeId' })
   };
   return Challenge;
 };

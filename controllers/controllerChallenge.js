@@ -21,7 +21,13 @@ class ControllerChallenge {
 
 
     static createForm(req, res){
-        res.render('challengeAdd', { error: req.query.error })
+        Challenge.findAll()
+            .then(challenge => {
+                res.render('./challenges/addFormChallenge', { challenge })
+            })
+            .catch(err => {
+                res.send(err)
+            })
     }
 
     static createChallenge(req, res){
@@ -29,10 +35,11 @@ class ControllerChallenge {
             res.redirect('/challenges/add?error=' + 'Challenge Name harus diisi')
         }  else {
             Challenge.create({
-                name: req.body.name
+                name: req.body.name,
+                deadline: req.body.deadline
             })
                 .then(data => {
-                    res.redirect('/challenges?success=' + 'Suksess menambahkan Challenge')
+                    res.redirect('/challenges/add')
                 })
                 .catch(err => {
                     console.log(err);

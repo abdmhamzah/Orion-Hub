@@ -14,4 +14,8 @@ router.post('/edit/:id', StudentsControllers.updateStudent)
 //Delete students
 router.get('/delete/:id', StudentsControllers.dell)
 
+//Student Challenges
+router.get('/challenges/:id', StudentsControllers.challenge)
+router.post('/challenges/:id', StudentsControllers.challengeList)
+
 module.exports = router
