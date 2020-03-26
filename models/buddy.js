@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   
   Buddy.associate = function(models) {
     // associations can be defined here
-    Buddy.hasOne(models.Student)
+    Buddy.hasMany(models.Student)
   };
   return Buddy;
 };
