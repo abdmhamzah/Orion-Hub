@@ -33,6 +33,7 @@ class StudentsController {
                 res.send(err)
             })
     }
+    
 
     static editForm(req, res) {
         console.log('req: ', req.params.id);
